@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Premium utilities and animations */
+@layer utilities {
+	.deep-gradient {
+		background: linear-gradient(135deg, #0b1220 0%, #0e2344 50%, #0c4a6e 100%);
+	}
+	.glass-card {
+		@apply bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl;
+	}
+	.soft-shadow {
+		box-shadow: 0 12px 40px rgba(0, 20, 60, .35);
+	}
+	.accent-hover {
+		transition: box-shadow 300ms cubic-bezier(.2,.6,.2,1), transform 300ms cubic-bezier(.2,.6,.2,1);
+	}
+	.accent-hover:hover {
+		box-shadow: 0 0 0 1px rgba(34, 211, 238, .3), 0 12px 40px rgba(0, 20, 60, .35);
+	}
+	.shimmer {
+		position: relative;
+		overflow: hidden;
+		background: linear-gradient(90deg, rgba(255,255,255,.06) 25%, rgba(255,255,255,.12) 37%, rgba(255,255,255,.06) 63%);
+		background-size: 400% 100%;
+		animation: shimmer 1.4s infinite;
+	}
+}
+
+@keyframes shimmer {
+	0% { background-position: 100% 0; }
+	100% { background-position: 0 0; }
+}
+
+@keyframes radar-sweep {
+	from { transform: rotate(0deg); }
+	to { transform: rotate(360deg); }
+}
+
+@keyframes breath {
+	0%, 100% { opacity: .5; }
+	50% { opacity: 1; }
+}
+
+@keyframes pulse-soft {
+	0%, 100% { transform: scale(0.98); opacity: .8; }
+	50% { transform: scale(1); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.accent-hover, .shimmer { animation: none !important; transition: none !important; }
+}
